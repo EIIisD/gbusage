@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { initializeExchangeRate } from '@ccusage/internal/exchange-rate';
+import { initializeExchangeRate } from '@gbusage/internal/exchange-rate';
 import { run } from './run.ts';
 
 // Initialize exchange rate in background (uses file cache for immediate availability)

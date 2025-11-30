@@ -1,5 +1,5 @@
 {
-	"name": "ccusage",
+	"name": "gbusage",
 	"type": "module",
 	"version": "17.1.6",
 	"description": "Usage analysis tool for Claude Code",
@@ -26,7 +26,7 @@
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"bin": {
-		"ccusage": "./src/index.ts"
+		"gbusage": "./src/index.ts"
 	},
 	"files": [
 		"config-schema.json",
@@ -54,8 +54,8 @@
 	},
 	"devDependencies": {
 		"@antfu/utils": "catalog:runtime",
-		"@ccusage/internal": "workspace:*",
-		"@ccusage/terminal": "workspace:*",
+		"@gbusage/internal": "workspace:*",
+		"@gbusage/terminal": "workspace:*",
 		"@oxc-project/runtime": "catalog:build",
 		"@praha/byethrow": "catalog:runtime",
 		"@ryoppippi/eslint-config": "catalog:lint",
@@ -92,7 +92,7 @@
 	},
 	"publishConfig": {
 		"bin": {
-			"ccusage": "./dist/index.js"
+			"gbusage": "./dist/index.js"
 		},
 		"exports": {
 			".": "./dist/index.js",

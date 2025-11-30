@@ -12,8 +12,8 @@ const EXCHANGE_RATE_API_URL = 'https://open.er-api.com/v6/latest/USD';
 const FALLBACK_RATE = 0.79;
 const CACHE_DURATION_MS = 10 * 60 * 1000; // 10 minutes
 
-// Cache file location: ~/.ccusage/exchange-rate.json
-const CACHE_DIR = join(homedir(), '.ccusage');
+// Cache file location: ~/.gbusage/exchange-rate.json
+const CACHE_DIR = join(homedir(), '.gbusage');
 const CACHE_FILE = join(CACHE_DIR, 'exchange-rate.json');
 
 type ExchangeRateResponse = {

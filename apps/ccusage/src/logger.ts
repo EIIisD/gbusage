@@ -1,13 +1,14 @@
 /**
- * @fileoverview Logging utilities for the ccusage application
+ * @fileoverview Logging utilities for the gbusage application
  *
  * This module provides configured logger instances using consola for consistent
  * logging throughout the application with package name tagging.
+ * Fork of ccusage (https://github.com/ryoppippi/ccusage)
  *
  * @module logger
  */
 
-import { createLogger, log as internalLog } from '@ccusage/internal/logger';
+import { createLogger, log as internalLog } from '@gbusage/internal/logger';
 
 import { name } from '../package.json';
 

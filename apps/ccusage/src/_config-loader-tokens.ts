@@ -51,12 +51,12 @@ export type ConfigData = {
 
 /**
  * Get configuration file search paths in priority order (highest to lowest)
- * 1. Local .ccusage/ccusage.json
- * 2. User config directories from getClaudePaths() + ccusage.json
+ * 1. Local .gbusage/gbusage.json
+ * 2. User config directories from getClaudePaths() + gbusage.json
  */
 function getConfigSearchPaths(): string[] {
 	const claudeConfigDirs = [
-		join(process.cwd(), '.ccusage'),
+		join(process.cwd(), '.gbusage'),
 		...toArray(getClaudePaths()),
 	];
 	return claudeConfigDirs.map(dir => join(dir, CONFIG_FILE_NAME));
@@ -391,9 +391,9 @@ if (import.meta.vitest != null) {
 			vi.restoreAllMocks();
 		});
 
-		it('should load valid configuration from .ccusage/ccusage.json', async () => {
+		it('should load valid configuration from .gbusage/gbusage.json', async () => {
 			await using fixture = await createFixture({
-				'.ccusage/ccusage.json': JSON.stringify({
+				'.gbusage/gbusage.json': JSON.stringify({
 					defaults: { json: true },
 					commands: { daily: { instances: true } },
 				}),

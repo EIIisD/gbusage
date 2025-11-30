@@ -1,4 +1,4 @@
-import { createLogger, log as internalLog } from '@ccusage/internal/logger';
+import { createLogger, log as internalLog } from '@gbusage/internal/logger';
 
 import { name } from '../package.json';
 

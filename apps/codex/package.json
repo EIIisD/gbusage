@@ -1,5 +1,5 @@
 {
-	"name": "@ccusage/codex",
+	"name": "@gbusage/codex",
 	"type": "module",
 	"version": "17.1.6",
 	"description": "Usage analysis tool for OpenAI Codex sessions",
@@ -17,7 +17,7 @@
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"bin": {
-		"ccusage-codex": "./src/index.ts"
+		"gbusage-codex": "./src/index.ts"
 	},
 	"files": [
 		"dist"
@@ -36,8 +36,8 @@
 		"typecheck": "tsgo --noEmit"
 	},
 	"devDependencies": {
-		"@ccusage/internal": "workspace:*",
-		"@ccusage/terminal": "workspace:*",
+		"@gbusage/internal": "workspace:*",
+		"@gbusage/terminal": "workspace:*",
 		"@praha/byethrow": "catalog:runtime",
 		"@ryoppippi/eslint-config": "catalog:lint",
 		"@typescript/native-preview": "catalog:types",
@@ -57,7 +57,7 @@
 	},
 	"publishConfig": {
 		"bin": {
-			"ccusage-codex": "./dist/index.js"
+			"gbusage-codex": "./dist/index.js"
 		}
 	},
 	"devEngines": {

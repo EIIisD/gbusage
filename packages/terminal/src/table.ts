@@ -1,5 +1,5 @@
 import process from 'node:process';
-import { convertUsdToGbp } from '@ccusage/internal/exchange-rate';
+import { convertUsdToGbp } from '@gbusage/internal/exchange-rate';
 import Table from 'cli-table3';
 import { uniq } from 'es-toolkit';
 import pc from 'picocolors';

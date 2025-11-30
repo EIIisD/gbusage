@@ -1,4 +1,4 @@
-import { LiteLLMPricingFetcher } from '@ccusage/internal/pricing';
+import { LiteLLMPricingFetcher } from '@gbusage/internal/pricing';
 import { Result } from '@praha/byethrow';
 import { prefetchClaudePricing } from './_macro.ts' with { type: 'macro' };
 import { logger } from './logger.ts';

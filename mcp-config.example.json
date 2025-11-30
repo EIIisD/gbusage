@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "gbusage": {
-      "command": "bun",
-      "args": ["run", "~/Developer/gbusage/apps/mcp/src/index.ts"]
-    }
-  }
-}

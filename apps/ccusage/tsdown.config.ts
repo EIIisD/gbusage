@@ -19,8 +19,8 @@ export default defineConfig({
 		resolve: [
 			'type-fest',
 			'valibot',
-			'@ccusage/internal',
-			'@ccusage/terminal',
+			'@gbusage/internal',
+			'@gbusage/terminal',
 		],
 	},
 	publint: true,

@@ -222,8 +222,8 @@
 								},
 								"projectAliases": {
 									"type": "string",
-									"description": "Comma-separated project aliases (e.g., 'ccusage=Usage Tracker,myproject=My Project')",
-									"markdownDescription": "Comma-separated project aliases (e.g., 'ccusage=Usage Tracker,myproject=My Project')"
+									"description": "Comma-separated project aliases (e.g., 'gbusage=Usage Tracker,myproject=My Project')",
+									"markdownDescription": "Comma-separated project aliases (e.g., 'gbusage=Usage Tracker,myproject=My Project')"
 								}
 							},
 							"additionalProperties": false
@@ -682,12 +682,12 @@
 									"type": "string",
 									"enum": [
 										"auto",
-										"ccusage",
+										"gbusage",
 										"cc",
 										"both"
 									],
-									"description": "Session cost source: auto (prefer CC then ccusage), ccusage (always calculate), cc (always use Claude Code cost), both (show both costs)",
-									"markdownDescription": "Session cost source: auto (prefer CC then ccusage), ccusage (always calculate), cc (always use Claude Code cost), both (show both costs)",
+									"description": "Session cost source: auto (prefer CC then gbusage), gbusage (always calculate), cc (always use Claude Code cost), both (show both costs)",
+									"markdownDescription": "Session cost source: auto (prefer CC then gbusage), gbusage (always calculate), cc (always use Claude Code cost), both (show both costs)",
 									"default": "auto"
 								},
 								"cache": {

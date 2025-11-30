@@ -213,10 +213,10 @@ importers:
       '@antfu/utils':
         specifier: catalog:runtime
         version: 9.2.1
-      '@ccusage/internal':
+      '@gbusage/internal':
         specifier: workspace:*
         version: link:../../packages/internal
-      '@ccusage/terminal':
+      '@gbusage/terminal':
         specifier: workspace:*
         version: link:../../packages/terminal
       '@oxc-project/runtime':
@@ -327,10 +327,10 @@ importers:
 
   apps/codex:
     devDependencies:
-      '@ccusage/internal':
+      '@gbusage/internal':
         specifier: workspace:*
         version: link:../../packages/internal
-      '@ccusage/terminal':
+      '@gbusage/terminal':
         specifier: workspace:*
         version: link:../../packages/terminal
       '@praha/byethrow':
@@ -390,7 +390,7 @@ importers:
 
   apps/mcp:
     dependencies:
-      '@ccusage/codex':
+      '@gbusage/codex':
         specifier: workspace:*
         version: link:../codex
       '@hono/mcp':
@@ -402,7 +402,7 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: catalog:runtime
         version: 1.18.1
-      ccusage:
+      gbusage:
         specifier: workspace:*
         version: link:../ccusage
       gunshi:
@@ -418,7 +418,7 @@ importers:
         specifier: catalog:runtime
         version: 3.25.76
     devDependencies:
-      '@ccusage/internal':
+      '@gbusage/internal':
         specifier: workspace:*
         version: link:../../packages/internal
       '@ryoppippi/eslint-config':
@@ -475,15 +475,15 @@ importers:
       bun:
         specifier: runtime:^1.3.2
         version: runtime:1.3.3
-      ccusage:
-        specifier: workspace:^
-        version: link:../apps/ccusage
       eslint:
         specifier: catalog:lint
         version: 9.35.0(jiti@2.5.1)
       eslint-plugin-format:
         specifier: catalog:lint
         version: 1.0.2(eslint@9.35.0(jiti@2.5.1))
+      gbusage:
+        specifier: workspace:^
+        version: link:../apps/ccusage
       node:
         specifier: runtime:^24.11.0
         version: runtime:24.11.1
@@ -558,7 +558,7 @@ importers:
         specifier: catalog:runtime
         version: 7.2.0
     devDependencies:
-      '@ccusage/internal':
+      '@gbusage/internal':
         specifier: workspace:*
         version: link:../internal
       '@ryoppippi/eslint-config':
@@ -2387,8 +2387,7 @@ packages:
           targets:
             - cpu: x64
               os: win32
-    version: 1.3.3
-    hasBin: true
+    version: 0.0.0
 
   bytes@3.1.2:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
@@ -3760,8 +3759,7 @@ packages:
           targets:
             - cpu: x64
               os: win32
-    version: 24.11.1
-    hasBin: true
+    version: 0.0.0
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}

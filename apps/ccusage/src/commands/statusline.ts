@@ -3,7 +3,7 @@ import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import process from 'node:process';
-import { formatCurrency } from '@ccusage/terminal/table';
+import { formatCurrency } from '@gbusage/terminal/table';
 import { Result } from '@praha/byethrow';
 import { createLimoJson } from '@ryoppippi/limo';
 import getStdin from 'get-stdin';
@@ -40,7 +40,7 @@ function formatRemainingTime(remaining: number): string {
  * Uses time-based expiry and transcript file modification detection for cache invalidation
  */
 function getSemaphore(sessionId: string): ReturnType<typeof createLimoJson<SemaphoreType | undefined>> {
-	const semaphoreDir = join(tmpdir(), 'ccusage-semaphore');
+	const semaphoreDir = join(tmpdir(), 'gbusage-semaphore');
 	const semaphorePath = join(semaphoreDir, `${sessionId}.lock`);
 
 	// Ensure semaphore directory exists
@@ -72,7 +72,7 @@ type SemaphoreType = {
 };
 
 const visualBurnRateChoices = ['off', 'emoji', 'text', 'emoji-text'] as const;
-const costSourceChoices = ['auto', 'ccusage', 'cc', 'both'] as const;
+const costSourceChoices = ['auto', 'gbusage', 'cc', 'both'] as const;
 
 // Valibot schema for context threshold validation
 const contextThresholdSchema = v.pipe(
@@ -120,7 +120,7 @@ export const statuslineCommand = define({
 		costSource: {
 			type: 'enum',
 			choices: costSourceChoices,
-			description: 'Session cost source: auto (prefer CC then ccusage), ccusage (always calculate), cc (always use Claude Code cost), both (show both costs)',
+			description: 'Session cost source: auto (prefer CC then gbusage), gbusage (always calculate), cc (always use Claude Code cost), both (show both costs)',
 			default: 'auto',
 			negatable: false,
 			toKebab: true,
@@ -274,8 +274,8 @@ export const statuslineCommand = define({
 					const { sessionCost, ccCost, ccusageCost } = await (async (): Promise<{ sessionCost?: number; ccCost?: number; ccusageCost?: number }> => {
 						const costSource = ctx.values.costSource;
 
-						// Helper function to get ccusage cost
-						const getCcusageCost = async (): Promise<number | undefined> => {
+						// Helper function to get gbusage cost
+						const getGbusageCost = async (): Promise<number | undefined> => {
 							return Result.pipe(
 								Result.try({
 									try: async () => loadSessionUsageById(sessionId, {
@@ -293,8 +293,8 @@ export const statuslineCommand = define({
 						// If 'both' mode, calculate both costs
 						if (costSource === 'both') {
 							const ccCost = hookData.cost?.total_cost_usd;
-							const ccusageCost = await getCcusageCost();
-							return { ccCost, ccusageCost };
+							const gbusageCost = await getGbusageCost();
+							return { ccCost, ccusageCost: gbusageCost };
 						}
 
 						// If 'cc' mode and cost is available from Claude Code, use it
@@ -302,19 +302,19 @@ export const statuslineCommand = define({
 							return { sessionCost: hookData.cost?.total_cost_usd };
 						}
 
-						// If 'ccusage' mode, always calculate using ccusage
-						if (costSource === 'ccusage') {
-							const cost = await getCcusageCost();
+						// If 'gbusage' mode, always calculate using gbusage
+						if (costSource === 'gbusage') {
+							const cost = await getGbusageCost();
 							return { sessionCost: cost };
 						}
 
-						// If 'auto' mode (default), prefer Claude Code cost, fallback to ccusage
+						// If 'auto' mode (default), prefer Claude Code cost, fallback to gbusage
 						if (costSource === 'auto') {
 							if (hookData.cost?.total_cost_usd != null) {
 								return { sessionCost: hookData.cost.total_cost_usd };
 							}
-							// Fallback to ccusage calculation
-							const cost = await getCcusageCost();
+							// Fallback to gbusage calculation
+							const cost = await getGbusageCost();
 							return { sessionCost: cost };
 						}
 						unreachable(costSource);
@@ -461,8 +461,8 @@ export const statuslineCommand = define({
 						// If both costs are available, show them side by side
 						if (ccCost != null || ccusageCost != null) {
 							const ccDisplay = ccCost != null ? formatCurrency(ccCost) : 'N/A';
-							const ccusageDisplay = ccusageCost != null ? formatCurrency(ccusageCost) : 'N/A';
-							return `(${ccDisplay} cc, ${ccusageDisplay} ccusage)`;
+							const gbusageDisplay = ccusageCost != null ? formatCurrency(ccusageCost) : 'N/A';
+							return `(${ccDisplay} cc, ${gbusageDisplay} gbusage)`;
 						}
 						// Single cost display
 						return sessionCost != null ? formatCurrency(sessionCost) : 'N/A';

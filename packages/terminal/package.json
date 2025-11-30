@@ -1,9 +1,9 @@
 {
-	"name": "@ccusage/terminal",
+	"name": "@gbusage/terminal",
 	"type": "module",
 	"version": "17.1.6",
 	"private": true,
-	"description": "Terminal utilities for ccusage",
+	"description": "Terminal utilities for gbusage",
 	"exports": {
 		"./table": "./src/table.ts",
 		"./utils": "./src/utils.ts"
@@ -23,7 +23,7 @@
 		"string-width": "catalog:runtime"
 	},
 	"devDependencies": {
-		"@ccusage/internal": "workspace:*",
+		"@gbusage/internal": "workspace:*",
 		"@ryoppippi/eslint-config": "catalog:lint",
 		"eslint": "catalog:lint",
 		"eslint-plugin-format": "catalog:lint",
