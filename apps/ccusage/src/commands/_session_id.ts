@@ -85,7 +85,7 @@ export async function handleSessionIdLookup(ctx: SessionIdContext, useJson: bool
 					'Output',
 					'Cache Create',
 					'Cache Read',
-					'Cost (USD)',
+					'Cost (GBP)',
 				],
 				style: { head: ['cyan'] },
 				colAligns: ['left', 'left', 'right', 'right', 'right', 'right', 'right'],

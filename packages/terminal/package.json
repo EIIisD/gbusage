@@ -23,6 +23,7 @@
 		"string-width": "catalog:runtime"
 	},
 	"devDependencies": {
+		"@ccusage/internal": "workspace:*",
 		"@ryoppippi/eslint-config": "catalog:lint",
 		"eslint": "catalog:lint",
 		"eslint-plugin-format": "catalog:lint",

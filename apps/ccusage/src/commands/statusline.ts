@@ -378,7 +378,7 @@ export const statuslineCommand = define({
 								const remaining = Math.round((activeBlock.endTime.getTime() - now.getTime()) / (1000 * 60));
 								const blockCost = activeBlock.costUSD;
 
-								const blockInfo = `${formatCurrency(blockCost)} block (${formatRemainingTime(remaining)})`;
+								const blockInfo = `${formatCurrency(blockCost)} (${formatRemainingTime(remaining)})`;
 
 								// Calculate burn rate
 								const burnRate = calculateBurnRate(activeBlock);
@@ -417,7 +417,7 @@ export const statuslineCommand = define({
 												burnRateOutputSegments.push(coloredString(`(${textValue})`));
 											}
 
-											return ` | 🔥 ${burnRateOutputSegments.join(' ')}`;
+											return ` · ${burnRateOutputSegments.join(' ')}`;
 										})()
 									: '';
 
@@ -447,11 +447,7 @@ export const statuslineCommand = define({
 								: contextResult.percentage < ctx.values.contextMediumThreshold
 									? pc.yellow
 									: pc.red;
-							const coloredPercentage = color(`${contextResult.percentage}%`);
-
-							// Format token count with thousand separators
-							const tokenDisplay = contextResult.inputTokens.toLocaleString();
-							return `${tokenDisplay} (${coloredPercentage})`;
+							return color(`${contextResult.percentage}%`);
 						}),
 						Result.unwrap(undefined),
 					);
@@ -460,18 +456,18 @@ export const statuslineCommand = define({
 					const modelName = hookData.model.display_name;
 
 					// Format and output the status line
-					// Format: 🤖 model | 💰 session / today / block | 🔥 burn | 🧠 context
+					// Format: model · session, today, block · burn · context
 					const sessionDisplay = (() => {
 						// If both costs are available, show them side by side
 						if (ccCost != null || ccusageCost != null) {
 							const ccDisplay = ccCost != null ? formatCurrency(ccCost) : 'N/A';
 							const ccusageDisplay = ccusageCost != null ? formatCurrency(ccusageCost) : 'N/A';
-							return `(${ccDisplay} cc / ${ccusageDisplay} ccusage)`;
+							return `(${ccDisplay} cc, ${ccusageDisplay} ccusage)`;
 						}
 						// Single cost display
 						return sessionCost != null ? formatCurrency(sessionCost) : 'N/A';
 					})();
-					const statusLine = `🤖 ${modelName} | 💰 ${sessionDisplay} session / ${formatCurrency(todayCost)} today / ${blockInfo}${burnRateInfo} | 🧠 ${contextInfo ?? 'N/A'}`;
+					const statusLine = `${modelName} · ${sessionDisplay} session, ${formatCurrency(todayCost)} today, ${blockInfo}${burnRateInfo} · ${contextInfo ?? 'N/A'}`;
 					return statusLine;
 				},
 				catch: error => error,

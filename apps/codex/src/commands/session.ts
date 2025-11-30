@@ -97,9 +97,9 @@ export const sessionCommand = define({
 			logger.box(`Codex Token Usage Report - Sessions (Timezone: ${ctx.values.timezone ?? DEFAULT_TIMEZONE})`);
 
 			const table: ResponsiveTable = new ResponsiveTable({
-				head: ['Date', 'Directory', 'Session', 'Models', 'Input', 'Output', 'Reasoning', 'Cache Read', 'Total Tokens', 'Cost (USD)', 'Last Activity'],
+				head: ['Date', 'Directory', 'Session', 'Models', 'Input', 'Output', 'Reasoning', 'Cache Read', 'Total Tokens', 'Cost (GBP)', 'Last Activity'],
 				colAligns: ['left', 'left', 'left', 'left', 'right', 'right', 'right', 'right', 'right', 'right', 'left'],
-				compactHead: ['Date', 'Directory', 'Session', 'Input', 'Output', 'Cost (USD)'],
+				compactHead: ['Date', 'Directory', 'Session', 'Input', 'Output', 'Cost (GBP)'],
 				compactColAligns: ['left', 'left', 'left', 'right', 'right', 'right'],
 				compactThreshold: 100,
 				forceCompact: ctx.values.compact,

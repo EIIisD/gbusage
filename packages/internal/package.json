@@ -9,7 +9,8 @@
 		"./pricing-fetch-utils": "./src/pricing-fetch-utils.ts",
 		"./logger": "./src/logger.ts",
 		"./format": "./src/format.ts",
-		"./constants": "./src/constants.ts"
+		"./constants": "./src/constants.ts",
+		"./exchange-rate": "./src/exchange-rate.ts"
 	},
 	"scripts": {
 		"format": "pnpm run lint --fix",

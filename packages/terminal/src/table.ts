@@ -1,4 +1,5 @@
 import process from 'node:process';
+import { convertUsdToGbp } from '@ccusage/internal/exchange-rate';
 import Table from 'cli-table3';
 import { uniq } from 'es-toolkit';
 import pc from 'picocolors';
@@ -307,12 +308,14 @@ export function formatNumber(num: number): string {
 }
 
 /**
- * Formats a number as USD currency with dollar sign and 2 decimal places
- * @param amount - The amount to format
- * @returns Formatted currency string (e.g., "$12.34")
+ * Formats a number as GBP currency with pound sign and 2 decimal places
+ * Converts from USD using cached exchange rate (fetched from API, updated daily)
+ * @param amount - The amount in USD to convert and format
+ * @returns Formatted currency string (e.g., "£12.34")
  */
 export function formatCurrency(amount: number): string {
-	return `$${amount.toFixed(2)}`;
+	const gbpAmount = convertUsdToGbp(amount);
+	return `£${gbpAmount.toFixed(2)}`;
 }
 
 /**
@@ -449,7 +452,7 @@ export function createUsageReportTable(config: UsageReportConfig): ResponsiveTab
 		'Cache Create',
 		'Cache Read',
 		'Total Tokens',
-		'Cost (USD)',
+		'Cost (GBP)',
 	];
 
 	const baseAligns: TableCellAlign[] = [
@@ -468,7 +471,7 @@ export function createUsageReportTable(config: UsageReportConfig): ResponsiveTab
 		'Models',
 		'Input',
 		'Output',
-		'Cost (USD)',
+		'Cost (GBP)',
 	];
 
 	const compactAligns: TableCellAlign[] = [
@@ -915,36 +918,40 @@ if (import.meta.vitest != null) {
 	});
 
 	describe('formatCurrency', () => {
-		it('formats positive amounts', () => {
-			expect(formatCurrency(10)).toBe('$10.00');
-			expect(formatCurrency(100.5)).toBe('$100.50');
-			expect(formatCurrency(1234.56)).toBe('$1234.56');
+		it('formats with pound sign and two decimal places', () => {
+			// Test format pattern (actual values depend on exchange rate)
+			expect(formatCurrency(10)).toMatch(/^£\d+\.\d{2}$/);
+			expect(formatCurrency(100)).toMatch(/^£\d+\.\d{2}$/);
+			expect(formatCurrency(1000)).toMatch(/^£\d+\.\d{2}$/);
 		});
 
 		it('formats zero', () => {
-			expect(formatCurrency(0)).toBe('$0.00');
+			expect(formatCurrency(0)).toBe('£0.00');
 		});
 
-		it('formats negative amounts', () => {
-			expect(formatCurrency(-10)).toBe('$-10.00');
-			expect(formatCurrency(-100.5)).toBe('$-100.50');
+		it('formats negative amounts with pound sign', () => {
+			expect(formatCurrency(-10)).toMatch(/^£-\d+\.\d{2}$/);
+			expect(formatCurrency(-100)).toMatch(/^£-\d+\.\d{2}$/);
 		});
 
-		it('rounds to two decimal places', () => {
-			expect(formatCurrency(10.999)).toBe('$11.00');
-			expect(formatCurrency(10.994)).toBe('$10.99');
-			expect(formatCurrency(10.995)).toBe('$10.99'); // JavaScript's toFixed uses banker's rounding
+		it('applies exchange rate conversion', () => {
+			// Verify conversion is applied (GBP should be less than USD)
+			const result = formatCurrency(100);
+			const gbpValue = Number.parseFloat(result.replace('£', ''));
+			expect(gbpValue).toBeLessThan(100); // GBP value should be less than USD
+			expect(gbpValue).toBeGreaterThan(50); // But not unreasonably low
 		});
 
 		it('handles small decimal values', () => {
-			expect(formatCurrency(0.01)).toBe('$0.01');
-			expect(formatCurrency(0.001)).toBe('$0.00');
-			expect(formatCurrency(0.009)).toBe('$0.01');
+			expect(formatCurrency(0.01)).toMatch(/^£\d+\.\d{2}$/);
+			expect(formatCurrency(0.1)).toMatch(/^£\d+\.\d{2}$/);
 		});
 
 		it('handles large numbers', () => {
-			expect(formatCurrency(1000000)).toBe('$1000000.00');
-			expect(formatCurrency(9999999.99)).toBe('$9999999.99');
+			const result = formatCurrency(1000000);
+			expect(result).toMatch(/^£\d+\.\d{2}$/);
+			const gbpValue = Number.parseFloat(result.replace('£', ''));
+			expect(gbpValue).toBeGreaterThan(500000); // Should be substantial
 		});
 	});
 

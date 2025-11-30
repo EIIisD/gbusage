@@ -1,3 +1,5 @@
+import { convertUsdToGbp } from './exchange-rate.ts';
+
 /**
  * Format a number as tokens with locale-specific formatting
  * @param value - Token count to format
@@ -8,16 +10,17 @@ export function formatTokens(value: number): string {
 }
 
 /**
- * Format a number as USD currency
- * @param value - Amount in USD
- * @param locale - Locale for formatting (default: 'en-US')
- * @returns Formatted currency string
+ * Format a number as GBP currency (converted from USD using cached exchange rate)
+ * @param value - Amount in USD to convert
+ * @param locale - Locale for formatting (default: 'en-GB')
+ * @returns Formatted currency string in GBP
  */
 export function formatCurrency(value: number, locale?: string): string {
-	return new Intl.NumberFormat(locale ?? 'en-US', {
+	const gbpValue = convertUsdToGbp(value);
+	return new Intl.NumberFormat(locale ?? 'en-GB', {
 		style: 'currency',
-		currency: 'USD',
+		currency: 'GBP',
 		minimumFractionDigits: 4,
 		maximumFractionDigits: 4,
-	}).format(value);
+	}).format(gbpValue);
 }

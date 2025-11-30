@@ -97,9 +97,9 @@ export const dailyCommand = define({
 			logger.box(`Codex Token Usage Report - Daily (Timezone: ${ctx.values.timezone ?? DEFAULT_TIMEZONE})`);
 
 			const table: ResponsiveTable = new ResponsiveTable({
-				head: ['Date', 'Models', 'Input', 'Output', 'Reasoning', 'Cache Read', 'Total Tokens', 'Cost (USD)'],
+				head: ['Date', 'Models', 'Input', 'Output', 'Reasoning', 'Cache Read', 'Total Tokens', 'Cost (GBP)'],
 				colAligns: ['left', 'left', 'right', 'right', 'right', 'right', 'right', 'right'],
-				compactHead: ['Date', 'Models', 'Input', 'Output', 'Cost (USD)'],
+				compactHead: ['Date', 'Models', 'Input', 'Output', 'Cost (GBP)'],
 				compactColAligns: ['left', 'left', 'right', 'right', 'right'],
 				compactThreshold: 100,
 				forceCompact: ctx.values.compact,
