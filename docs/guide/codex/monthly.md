@@ -2,14 +2,14 @@
 
 ![Codex CLI monthly report](/codex-cli.jpeg)
 
-The `monthly` command mirrors ccusage's monthly report while operating on Codex CLI session logs.
+The `monthly` command mirrors gbusage's monthly report while operating on Codex CLI session logs.
 
 ```bash
 # Recommended (fastest)
-bunx @ccusage/codex@latest monthly
+bunx @gbusage/codex@latest monthly
 
 # Using npx
-npx @ccusage/codex@latest monthly
+npx @gbusage/codex@latest monthly
 ```
 
 ## Options
@@ -23,4 +23,4 @@ npx @ccusage/codex@latest monthly
 | `--offline` / `--no-offline` | Force cached LiteLLM pricing or enable live fetching                        |
 | `--compact`                  | Force compact table layout (same columns as a narrow terminal)              |
 
-The output uses the same responsive table component as ccusage, including compact mode support, per-model token summaries, and a combined totals row.
+The output uses the same responsive table component as gbusage, including compact mode support, per-model token summaries, and a combined totals row.

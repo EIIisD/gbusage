@@ -6,8 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a monorepo containing multiple packages. For package-specific guidance, refer to the individual CLAUDE.md files:
 
-- **Main CLI Package**: @apps/ccusage/CLAUDE.md - Core ccusage CLI tool and library
-- **MCP Server Package**: @apps/mcp/CLAUDE.md - MCP server implementation for ccusage data
+- **Main CLI Package**: @apps/gbusage/CLAUDE.md - Core gbusage CLI tool and library
+- **MCP Server Package**: @apps/mcp/CLAUDE.md - MCP server implementation for gbusage data
 - **Documentation**: @docs/CLAUDE.md - VitePress-based documentation website
 
 Each package has its own development commands, dependencies, and specific guidelines. Always check the relevant package's CLAUDE.md when working within that package directory.
@@ -50,10 +50,10 @@ All projects under `apps/` ship as bundled CLIs/binaries. Treat their runtime de
 - `pnpm run start blocks --token-limit <limit>` - Token limit for quota warnings (number or "max")
 - `node ./src/index.ts` - Direct execution for development
 
-**MCP Server Usage:** (now provided by the `@ccusage/mcp` package)
+**MCP Server Usage:** (now provided by the `@gbusage/mcp` package)
 
-- `pnpm dlx @ccusage/mcp@latest -- --help` - Show available options
-- `pnpm dlx @ccusage/mcp@latest -- --type http --port 8080` - Start HTTP transport
+- `pnpm dlx @gbusage/mcp@latest -- --help` - Show available options
+- `pnpm dlx @gbusage/mcp@latest -- --type http --port 8080` - Start HTTP transport
 
 **Cost Calculation Modes:**
 
@@ -142,7 +142,7 @@ Follow the Conventional Commits specification with package/area prefixes:
 **Scope Naming Rules:**
 
 - **Apps**: Use the app directory name
-  - `feat(ccusage):` - Changes to apps/ccusage
+  - `feat(gbusage):` - Changes to apps/gbusage
   - `fix(mcp):` - Fixes in apps/mcp
   - `feat(codex):` - Features for apps/codex (if exists)
 
@@ -178,10 +178,10 @@ Follow the Conventional Commits specification with package/area prefixes:
 **Examples:**
 
 ```
-feat(ccusage): add support for Claude 4.1 models
+feat(gbusage): add support for Claude 4.1 models
 fix(mcp): resolve connection timeout issues
 docs(guide): update installation instructions
-refactor(ccusage): extract cost calculation to separate module
+refactor(gbusage): extract cost calculation to separate module
 test(mcp): add integration tests for HTTP transport
 chore: update dependencies
 ```
@@ -191,7 +191,7 @@ chore: update dependencies
 PR titles should follow the same format as commit messages. When a PR contains multiple commits, the title should describe the main change:
 
 ```
-feat(ccusage): implement session-based usage reports
+feat(gbusage): implement session-based usage reports
 fix(mcp): handle edge cases in data aggregation
 docs: comprehensive API documentation update
 ```
@@ -248,7 +248,7 @@ This ensures code quality and catches issues immediately after changes.
 - **Placement**: Always place screenshots immediately after the main heading (H1) in documentation pages
 - **Purpose**: Provide immediate visual context to users before textual explanations
 - **Guides with Screenshots**:
-  - `/docs/guide/index.md` (What is ccusage) - Main usage screenshot
+  - `/docs/guide/index.md` (What is gbusage) - Main usage screenshot
   - `/docs/guide/daily-reports.md` - Daily report output screenshot
   - `/docs/guide/live-monitoring.md` - Live monitoring dashboard screenshot
   - `/docs/guide/mcp-server.md` - Claude Desktop integration screenshot

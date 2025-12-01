@@ -1,11 +1,11 @@
 # CLAUDE.md - MCP Package
 
-This package provides the MCP (Model Context Protocol) server implementation for ccusage data.
+This package provides the MCP (Model Context Protocol) server implementation for gbusage data.
 
 ## Package Overview
 
-**Name**: `@ccusage/mcp`
-**Description**: MCP server implementation for ccusage data
+**Name**: `@gbusage/mcp`
+**Description**: MCP server implementation for gbusage data
 **Type**: MCP server with CLI and library exports
 
 ## Development Commands
@@ -28,20 +28,20 @@ This package provides the MCP (Model Context Protocol) server implementation for
 
 ```bash
 # Install and run as MCP server
-pnpm dlx @ccusage/mcp@latest -- --help
-pnpm dlx @ccusage/mcp@latest -- --type http --port 8080
+pnpm dlx @gbusage/mcp@latest -- --help
+pnpm dlx @gbusage/mcp@latest -- --type http --port 8080
 ```
 
 **Direct Usage:**
 
 ```bash
 # Run the CLI directly
-ccusage-mcp --help
+gbusage-mcp --help
 ```
 
 ## Architecture
 
-This package implements an MCP server that exposes ccusage functionality through the Model Context Protocol:
+This package implements an MCP server that exposes gbusage functionality through the Model Context Protocol:
 
 **Key Modules:**
 
@@ -68,7 +68,7 @@ This package implements an MCP server that exposes ccusage functionality through
 - `@hono/mcp` - MCP implementation for Hono
 - `@hono/node-server` - Node.js server adapter for Hono
 - `@modelcontextprotocol/sdk` - Official MCP SDK
-- `ccusage` - Main ccusage package (workspace dependency)
+- `gbusage` - Main gbusage package (workspace dependency)
 - `gunshi` - CLI framework
 - `hono` - Web framework
 - `zod` - Schema validation
@@ -82,7 +82,7 @@ This package implements an MCP server that exposes ccusage functionality through
 
 ## Integration with Claude Desktop
 
-This MCP server can be integrated with Claude Desktop to provide usage analysis directly within Claude conversations. Configure it in your Claude Desktop MCP settings to access ccusage data through the MCP protocol.
+This MCP server can be integrated with Claude Desktop to provide usage analysis directly within Claude conversations. Configure it in your Claude Desktop MCP settings to access gbusage data through the MCP protocol.
 
 ## Testing
 
@@ -93,7 +93,7 @@ This MCP server can be integrated with Claude Desktop to provide usage analysis 
 
 ## Code Style
 
-Follow the same code style guidelines as the main ccusage package:
+Follow the same code style guidelines as the main gbusage package:
 
 - **Error Handling**: Prefer `@praha/byethrow Result` type over try-catch
 - **Imports**: Use `.ts` extensions for local imports
@@ -117,4 +117,4 @@ The package provides multiple exports:
 
 ## Binary
 
-The package includes a binary `ccusage-mcp` that can be used to start the MCP server from the command line.
+The package includes a binary `gbusage-mcp` that can be used to start the MCP server from the command line.

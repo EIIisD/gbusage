@@ -1,5 +1,5 @@
 {
-	"extends": "./node_modules/ccusage/tsconfig.json",
+	"extends": "./node_modules/gbusage/tsconfig.json",
 	"compilerOptions": {
 		"resolveJsonModule": true,
 		"types": [

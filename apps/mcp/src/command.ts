@@ -1,8 +1,8 @@
-import type { LoadOptions } from 'ccusage/data-loader';
+import type { LoadOptions } from 'gbusage/data-loader';
 import process from 'node:process';
 import { serve } from '@hono/node-server';
-import { getClaudePaths } from 'ccusage/data-loader';
-import { logger } from 'ccusage/logger';
+import { getClaudePaths } from 'gbusage/data-loader';
+import { logger } from 'gbusage/logger';
 import { cli, define } from 'gunshi';
 import { description, name, version } from '../package.json';
 import { createMcpHttpApp, createMcpServer, startMcpServerStdio } from './mcp.ts';
@@ -89,7 +89,7 @@ export async function run(argv: string[] = process.argv.slice(2)): Promise<void>
 	// When invoked through npx/bunx, the binary name might be passed as the first argument
 	// Filter it out if it matches the expected binary name
 	let args = argv;
-	if (args[0] === 'ccusage-mcp') {
+	if (args[0] === 'gbusage-mcp') {
 		args = args.slice(1);
 	}
 

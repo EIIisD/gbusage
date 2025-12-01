@@ -1,10 +1,10 @@
 # Installation
 
-ccusage can be installed and used in several ways depending on your preferences and use case.
+gbusage can be installed and used in several ways depending on your preferences and use case.
 
 ## Why No Installation Needed?
 
-Thanks to ccusage's incredibly small bundle size, you don't need to install it globally. Unlike other CLI tools, we pay extreme attention to bundle size optimization, achieving an impressively small footprint even without minification. This means:
+Thanks to gbusage's incredibly small bundle size, you don't need to install it globally. Unlike other CLI tools, we pay extreme attention to bundle size optimization, achieving an impressively small footprint even without minification. This means:
 
 - ✅ Near-instant startup times
 - ✅ Minimal download overhead
@@ -13,24 +13,24 @@ Thanks to ccusage's incredibly small bundle size, you don't need to install it g
 
 ## Quick Start (Recommended)
 
-The fastest way to use ccusage is to run it directly:
+The fastest way to use gbusage is to run it directly:
 
 ::: code-group
 
 ```bash [bunx (Recommended)]
-bunx ccusage
+bunx gbusage
 ```
 
 ```bash [npx]
-npx ccusage@latest
+npx gbusage@latest
 ```
 
 ```bash [pnpm]
-pnpm dlx ccusage
+pnpm dlx gbusage
 ```
 
 ```bash [deno]
-deno run -E -R=$HOME/.claude/projects/ -S=homedir -N='raw.githubusercontent.com:443' npm:ccusage@latest
+deno run -E -R=$HOME/.claude/projects/ -S=homedir -N='raw.githubusercontent.com:443' npm:gbusage@latest
 ```
 
 :::
@@ -56,24 +56,24 @@ Here's why runtime choice matters:
 
 ## Global Installation (Optional)
 
-While not necessary due to our small bundle size, you can still install ccusage globally if you prefer:
+While not necessary due to our small bundle size, you can still install gbusage globally if you prefer:
 
 ::: code-group
 
 ```bash [npm]
-npm install -g ccusage
+npm install -g gbusage
 ```
 
 ```bash [bun]
-bun install -g ccusage
+bun install -g gbusage
 ```
 
 ```bash [yarn]
-yarn global add ccusage
+yarn global add gbusage
 ```
 
 ```bash [pnpm]
-pnpm add -g ccusage
+pnpm add -g gbusage
 ```
 
 :::
@@ -81,19 +81,19 @@ pnpm add -g ccusage
 After global installation, run commands directly:
 
 ```bash
-ccusage daily
-ccusage monthly --breakdown
-ccusage blocks --live
+gbusage daily
+gbusage monthly --breakdown
+gbusage blocks --live
 ```
 
 ## Development Installation
 
-For development or contributing to ccusage:
+For development or contributing to gbusage:
 
 ```bash
 # Clone the repository
 git clone https://github.com/ryoppippi/ccusage.git
-cd ccusage
+cd gbusage
 
 # Install dependencies
 bun install
@@ -131,7 +131,7 @@ bun run format
 
 - **Minimum**: Bun 1.2+
 - **Recommended**: Latest stable release
-- Often faster than Node.js for ccusage
+- Often faster than Node.js for gbusage
 
 ### Deno
 
@@ -143,32 +143,32 @@ deno run \
   -R=$HOME/.claude/projects/ \
   -S=homedir \
   -N='raw.githubusercontent.com:443' \
-  npm:ccusage@latest
+  npm:gbusage@latest
 ```
 
-Also you can use `offline` mode to run ccusage without network access:
+Also you can use `offline` mode to run gbusage without network access:
 
 ```bash
 deno run \
   -E \
   -R=$HOME/.claude/projects/ \
   -S=homedir \
-  npm:ccusage@latest --offline
+  npm:gbusage@latest --offline
 ```
 
 ## Verification
 
-After installation, verify ccusage is working:
+After installation, verify gbusage is working:
 
 ```bash
 # Check version
-ccusage --version
+gbusage --version
 
 # Run help command
-ccusage --help
+gbusage --help
 
 # Test with daily report
-ccusage daily
+gbusage daily
 ```
 
 ## Updating
@@ -181,16 +181,16 @@ Always gets the latest version automatically.
 
 ```bash
 # Update with npm
-npm update -g ccusage
+npm update -g gbusage
 
 # Update with bun
-bun update -g ccusage
+bun update -g gbusage
 ```
 
 ### Check Current Version
 
 ```bash
-ccusage --version
+gbusage --version
 ```
 
 ## Uninstalling
@@ -200,19 +200,19 @@ ccusage --version
 ::: code-group
 
 ```bash [npm]
-npm uninstall -g ccusage
+npm uninstall -g gbusage
 ```
 
 ```bash [bun]
-bun remove -g ccusage
+bun remove -g gbusage
 ```
 
 ```bash [yarn]
-yarn global remove ccusage
+yarn global remove gbusage
 ```
 
 ```bash [pnpm]
-pnpm remove -g ccusage
+pnpm remove -g gbusage
 ```
 
 :::
@@ -221,7 +221,7 @@ pnpm remove -g ccusage
 
 ```bash
 # Remove cloned repository
-rm -rf ccusage/
+rm -rf gbusage/
 ```
 
 ## Troubleshooting Installation
@@ -234,7 +234,7 @@ If you get permission errors during global installation:
 
 ```bash [npm]
 # Use npx instead of global install
-npx ccusage@latest
+npx gbusage@latest
 
 # Or configure npm to use a different directory
 npm config set prefix ~/.npm-global
@@ -244,11 +244,11 @@ export PATH=~/.npm-global/bin:$PATH
 ```bash [Node Version Managers]
 # Use nvm (recommended)
 nvm install node
-npm install -g ccusage
+npm install -g gbusage
 
 # Or use fnm
 fnm install node
-npm install -g ccusage
+npm install -g gbusage
 ```
 
 :::
@@ -259,10 +259,10 @@ If installation fails due to network issues:
 
 ```bash
 # Try with different registry
-npm install -g ccusage --registry https://registry.npmjs.org
+npm install -g gbusage --registry https://registry.npmjs.org
 
 # Or use bunx for offline-capable runs
-bunx ccusage
+bunx gbusage
 ```
 
 ### Version Conflicts
@@ -271,12 +271,12 @@ If you have multiple versions installed:
 
 ```bash
 # Check which version is being used
-which ccusage
-ccusage --version
+which gbusage
+gbusage --version
 
 # Uninstall and reinstall
-npm uninstall -g ccusage
-npm install -g ccusage@latest
+npm uninstall -g gbusage
+npm install -g gbusage@latest
 ```
 
 ## Next Steps
@@ -284,5 +284,5 @@ npm install -g ccusage@latest
 After installation, check out:
 
 - [Getting Started Guide](/guide/getting-started) - Your first usage report
-- [Configuration](/guide/configuration) - Customize ccusage behavior
+- [Configuration](/guide/configuration) - Customize gbusage behavior
 - [Daily Reports](/guide/daily-reports) - Understand daily usage patterns

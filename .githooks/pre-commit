@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Run lint-staged
-npx --no-install lint-staged
+bunx --no-install lint-staged

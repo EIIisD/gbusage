@@ -1,10 +1,10 @@
 # Environment Variables
 
-ccusage supports several environment variables for configuration and customization. Environment variables provide a way to configure ccusage without modifying command-line arguments or configuration files.
+gbusage supports several environment variables for configuration and customization. Environment variables provide a way to configure gbusage without modifying command-line arguments or configuration files.
 
 ## CLAUDE_CONFIG_DIR
 
-Specifies where ccusage should look for Claude Code data. This is the most important environment variable for ccusage.
+Specifies where gbusage should look for Claude Code data. This is the most important environment variable for gbusage.
 
 ### Single Directory
 
@@ -12,7 +12,7 @@ Set a single custom Claude data directory:
 
 ```bash
 export CLAUDE_CONFIG_DIR="/path/to/your/claude/data"
-ccusage daily
+gbusage daily
 ```
 
 ### Multiple Directories
@@ -21,14 +21,14 @@ Set multiple directories (comma-separated) to aggregate data from multiple sourc
 
 ```bash
 export CLAUDE_CONFIG_DIR="/path/to/claude1,/path/to/claude2"
-ccusage daily
+gbusage daily
 ```
 
-When multiple directories are specified, ccusage automatically aggregates usage data from all valid locations.
+When multiple directories are specified, gbusage automatically aggregates usage data from all valid locations.
 
 ### Default Behavior
 
-When `CLAUDE_CONFIG_DIR` is not set, ccusage automatically searches in:
+When `CLAUDE_CONFIG_DIR` is not set, gbusage automatically searches in:
 
 1. `~/.config/claude/projects/` (new default, Claude Code v1.0.30+)
 2. `~/.claude/projects/` (legacy location, pre-v1.0.30)
@@ -36,7 +36,7 @@ When `CLAUDE_CONFIG_DIR` is not set, ccusage automatically searches in:
 Data from all valid directories is automatically combined.
 
 ::: info Directory Change
-The directory change from `~/.claude` to `~/.config/claude` in Claude Code v1.0.30 was an undocumented breaking change. ccusage handles both locations automatically for backward compatibility.
+The directory change from `~/.claude` to `~/.config/claude` in Claude Code v1.0.30 was an undocumented breaking change. gbusage handles both locations automatically for backward compatibility.
 :::
 
 ### Use Cases
@@ -67,12 +67,12 @@ export CLAUDE_CONFIG_DIR="/team-shared/claude-data/$USER"
 ```bash
 # Use specific directory in CI pipeline
 export CLAUDE_CONFIG_DIR="/ci-data/claude-logs"
-ccusage daily --json > usage-report.json
+gbusage daily --json > usage-report.json
 ```
 
 ## LOG_LEVEL
 
-Controls the verbosity of log output. ccusage uses [consola](https://github.com/unjs/consola) for logging under the hood.
+Controls the verbosity of log output. gbusage uses [consola](https://github.com/unjs/consola) for logging under the hood.
 
 ### Log Levels
 
@@ -89,16 +89,16 @@ Controls the verbosity of log output. ccusage uses [consola](https://github.com/
 
 ```bash
 # Silent mode - only show results
-LOG_LEVEL=0 ccusage daily
+LOG_LEVEL=0 gbusage daily
 
 # Warning level - for CI/CD
-LOG_LEVEL=1 ccusage monthly
+LOG_LEVEL=1 gbusage monthly
 
 # Debug mode - troubleshooting
-LOG_LEVEL=4 ccusage session
+LOG_LEVEL=4 gbusage session
 
 # Trace everything - deep debugging
-LOG_LEVEL=5 ccusage blocks
+LOG_LEVEL=5 gbusage blocks
 ```
 
 ### Practical Applications
@@ -107,39 +107,39 @@ LOG_LEVEL=5 ccusage blocks
 
 ```bash
 # Get clean JSON output without logs
-LOG_LEVEL=0 ccusage daily --json | jq '.summary.totalCost'
+LOG_LEVEL=0 gbusage daily --json | jq '.summary.totalCost'
 ```
 
 #### CI/CD Pipeline
 
 ```bash
 # Show only warnings and errors in CI
-LOG_LEVEL=1 ccusage daily --instances
+LOG_LEVEL=1 gbusage daily --instances
 ```
 
 #### Debugging Issues
 
 ```bash
 # Maximum verbosity for troubleshooting
-LOG_LEVEL=5 ccusage daily --debug
+LOG_LEVEL=5 gbusage daily --debug
 ```
 
 #### Piping Output
 
 ```bash
 # Silent logs when piping to other commands
-LOG_LEVEL=0 ccusage monthly --json | python analyze.py
+LOG_LEVEL=0 gbusage monthly --json | python analyze.py
 ```
 
 ## Additional Environment Variables
 
-### CCUSAGE_OFFLINE
+### GBUSAGE_OFFLINE
 
 Force offline mode by default:
 
 ```bash
-export CCUSAGE_OFFLINE=1
-ccusage daily  # Runs in offline mode
+export GBUSAGE_OFFLINE=1
+gbusage daily  # Runs in offline mode
 ```
 
 ### NO_COLOR
@@ -148,7 +148,7 @@ Disable colored output (standard CLI convention):
 
 ```bash
 export NO_COLOR=1
-ccusage daily  # No color formatting
+gbusage daily  # No color formatting
 ```
 
 ### FORCE_COLOR
@@ -157,7 +157,7 @@ Force colored output even when piping:
 
 ```bash
 export FORCE_COLOR=1
-ccusage daily | less -R  # Preserves colors
+gbusage daily | less -R  # Preserves colors
 ```
 
 ## Setting Environment Variables
@@ -166,11 +166,11 @@ ccusage daily | less -R  # Preserves colors
 
 ```bash
 # Set for single command
-LOG_LEVEL=0 ccusage daily
+LOG_LEVEL=0 gbusage daily
 
 # Set for current shell session
 export CLAUDE_CONFIG_DIR="/custom/path"
-ccusage daily
+gbusage daily
 ```
 
 ### Permanent (Shell Profile)
@@ -218,10 +218,10 @@ Example:
 
 ```bash
 # Environment variable sets offline mode
-export CCUSAGE_OFFLINE=1
+export GBUSAGE_OFFLINE=1
 
 # But command-line argument overrides it
-ccusage daily --no-offline  # Runs in online mode
+gbusage daily --no-offline  # Runs in online mode
 ```
 
 ## Debugging
@@ -230,10 +230,10 @@ To see which environment variables are being used:
 
 ```bash
 # Show all environment variables
-env | grep -E "CLAUDE|CCUSAGE|LOG_LEVEL"
+env | grep -E "CLAUDE|GBUSAGE|LOG_LEVEL"
 
 # Debug mode shows environment variable usage
-LOG_LEVEL=4 ccusage daily --debug
+LOG_LEVEL=4 gbusage daily --debug
 ```
 
 ## Related Documentation

@@ -1,11 +1,11 @@
 # CLAUDE.md - Terminal Package
 
-This package provides terminal utilities for the ccusage toolchain.
+This package provides terminal utilities for the gbusage toolchain.
 
 ## Package Overview
 
-**Name**: `@ccusage/terminal`
-**Description**: Terminal utilities for ccusage
+**Name**: `@gbusage/terminal`
+**Description**: Terminal utilities for gbusage
 **Type**: Internal library package (private)
 
 ## Development Commands
@@ -19,7 +19,7 @@ This package provides terminal utilities for the ccusage toolchain.
 
 ## Architecture
 
-This package contains terminal utilities used across the ccusage monorepo:
+This package contains terminal utilities used across the gbusage monorepo:
 
 **Key Modules:**
 
@@ -55,7 +55,7 @@ This package contains terminal utilities used across the ccusage monorepo:
 
 ## Code Style
 
-Follow the same code style guidelines as the main ccusage package:
+Follow the same code style guidelines as the main gbusage package:
 
 - **Error Handling**: Prefer functional error handling patterns
 - **Imports**: Use `.ts` extensions for local imports

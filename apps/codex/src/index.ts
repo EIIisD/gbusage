@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 import { initializeExchangeRate } from '@gbusage/internal/exchange-rate';
 import { run } from './run.ts';

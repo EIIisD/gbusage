@@ -1,6 +1,6 @@
 # Sponsors
 
-Support ccusage development by becoming a sponsor! Your contribution helps maintain and improve this tool.
+Support gbusage development by becoming a sponsor! Your contribution helps maintain and improve this tool.
 
 ## Featured Sponsor
 
@@ -8,7 +8,7 @@ Check out [ccusage: The Claude Code cost scorecard that went viral](https://www.
 
 <p align="center">
     <a href="https://www.youtube.com/watch?v=Ak6qpQ5qdgk">
-        <img src="/ccusage_thumbnail.png" alt="ccusage: The Claude Code cost scorecard that went viral" width="600">
+        <img src="/gbusage_thumbnail.png" alt="ccusage: The Claude Code cost scorecard that went viral" width="600">
     </a>
 </p>
 
@@ -20,7 +20,7 @@ Check out [ccusage: The Claude Code cost scorecard that went viral](https://www.
 
 ## How to Sponsor
 
-Visit [GitHub Sponsors - @ryoppippi](https://github.com/sponsors/ryoppippi) to support the development of ccusage and other open source projects.
+Visit [GitHub Sponsors - @ryoppippi](https://github.com/sponsors/ryoppippi) to support the development of gbusage and other open source projects.
 
 ## Star History
 

@@ -22,7 +22,7 @@ Add this to your `~/.claude/settings.json` or `~/.config/claude/settings.json`:
 {
 	"statusLine": {
 		"type": "command",
-		"command": "bun x ccusage statusline", // Use "npx -y ccusage statusline" if you prefer npm
+		"command": "bun x gbusage statusline", // Use "npx -y gbusage statusline" if you prefer npm
 		"padding": 0 // Optional: set to 0 to let status line go to edge
 	}
 }
@@ -38,7 +38,7 @@ If you need the latest pricing data from LiteLLM API, you can explicitly enable 
 {
 	"statusLine": {
 		"type": "command",
-		"command": "bun x ccusage statusline --no-offline", // Fetches latest pricing from API
+		"command": "bun x gbusage statusline --no-offline", // Fetches latest pricing from API
 		"padding": 0
 	}
 }
@@ -52,7 +52,7 @@ You can enhance the burn rate display with visual indicators:
 {
 	"statusLine": {
 		"type": "command",
-		"command": "bun x ccusage statusline --visual-burn-rate emoji", // Add emoji indicators
+		"command": "bun x gbusage statusline --visual-burn-rate emoji", // Add emoji indicators
 		"padding": 0
 	}
 }
@@ -68,7 +68,7 @@ You can control how session costs are calculated and displayed:
 {
 	"statusLine": {
 		"type": "command",
-		"command": "bun x ccusage statusline --cost-source both", // Show both CC and ccusage costs
+		"command": "bun x gbusage statusline --cost-source both", // Show both CC and gbusage costs
 		"padding": 0
 	}
 }
@@ -84,10 +84,10 @@ The statusline displays a compact, single-line summary:
 🤖 Opus | 💰 $0.23 session / $1.23 today / $0.45 block (2h 45m left) | 🔥 $0.12/hr | 🧠 25,000 (12%)
 ```
 
-When using `--cost-source both`, the session cost shows both Claude Code and ccusage calculations:
+When using `--cost-source both`, the session cost shows both Claude Code and gbusage calculations:
 
 ```
-🤖 Opus | 💰 ($0.25 cc / $0.23 ccusage) session / $1.23 today / $0.45 block (2h 45m left) | 🔥 $0.12/hr | 🧠 25,000 (12%)
+🤖 Opus | 💰 ($0.25 cc / $0.23 gbusage) session / $1.23 today / $0.45 block (2h 45m left) | 🔥 $0.12/hr | 🧠 25,000 (12%)
 ```
 
 ### Components Explained
@@ -138,25 +138,25 @@ The `--cost-source` option controls how session costs are calculated and display
 
 **Available modes:**
 
-- `auto` (default): Prefer Claude Code's pre-calculated cost when available, fallback to ccusage calculation
-- `ccusage`: Always calculate costs using ccusage's token-based calculation with LiteLLM pricing
+- `auto` (default): Prefer Claude Code's pre-calculated cost when available, fallback to gbusage calculation
+- `gbusage`: Always calculate costs using gbusage's token-based calculation with LiteLLM pricing
 - `cc`: Always use Claude Code's pre-calculated cost from session data
-- `both`: Display both Claude Code and ccusage costs side by side for comparison
+- `both`: Display both Claude Code and gbusage costs side by side for comparison
 
 **Command-line usage:**
 
 ```bash
 # Default auto mode
-bun x ccusage statusline
+bun x gbusage statusline
 
-# Always use ccusage calculation
-bun x ccusage statusline --cost-source ccusage
+# Always use gbusage calculation
+bun x gbusage statusline --cost-source gbusage
 
 # Always use Claude Code cost
-bun x ccusage statusline --cost-source cc
+bun x gbusage statusline --cost-source cc
 
 # Show both costs for comparison
-bun x ccusage statusline --cost-source both
+bun x gbusage statusline --cost-source both
 ```
 
 **Settings.json configuration:**
@@ -165,7 +165,7 @@ bun x ccusage statusline --cost-source both
 {
 	"statusLine": {
 		"type": "command",
-		"command": "bun x ccusage statusline --cost-source both",
+		"command": "bun x gbusage statusline --cost-source both",
 		"padding": 0
 	}
 }
@@ -174,14 +174,14 @@ bun x ccusage statusline --cost-source both
 **When to use each mode:**
 
 - **`auto`**: Best for most users, provides accurate costs with fallback reliability
-- **`ccusage`**: When you want consistent calculation methods across all ccusage commands
+- **`gbusage`**: When you want consistent calculation methods across all gbusage commands
 - **`cc`**: When you trust Claude Code's cost calculations and want minimal processing
 - **`both`**: For debugging cost discrepancies or comparing calculation methods
 
 **Output differences:**
 
-- **Single cost modes** (`auto`, `ccusage`, `cc`): `💰 $0.23 session`
-- **Both mode**: `💰 ($0.25 cc / $0.23 ccusage) session`
+- **Single cost modes** (`auto`, `gbusage`, `cc`): `💰 $0.23 session`
+- **Both mode**: `💰 ($0.25 cc / $0.23 gbusage) session`
 
 ## Configuration
 
@@ -201,7 +201,7 @@ You can customize the context usage color thresholds using command-line options 
 **Command-line usage:**
 
 ```bash
-bun x ccusage statusline --context-low-threshold 60 --context-medium-threshold 90
+bun x gbusage statusline --context-low-threshold 60 --context-medium-threshold 90
 ```
 
 **Configuration file usage:**
@@ -217,7 +217,7 @@ With these settings:
 
 ```json
 {
-	"command": "bun x ccusage statusline --context-low-threshold 60 --context-medium-threshold 90",
+	"command": "bun x gbusage statusline --context-low-threshold 60 --context-medium-threshold 90",
 	"timeout": 5000
 }
 ```
@@ -228,7 +228,7 @@ You can enhance the burn rate display with visual status indicators using the `-
 
 ```bash
 # Add to your settings.json command
-bun x ccusage statusline --visual-burn-rate emoji
+bun x gbusage statusline --visual-burn-rate emoji
 ```
 
 **Available options:**
@@ -266,7 +266,7 @@ bun x ccusage statusline --visual-burn-rate emoji
 
 If the statusline doesn't show:
 
-1. Verify `ccusage` is in your PATH
+1. Verify `gbusage` is in your PATH
 2. Check Claude Code logs for any errors
 3. Ensure you have valid usage data in your Claude data directory
 
@@ -274,8 +274,8 @@ If the statusline doesn't show:
 
 If costs seem incorrect:
 
-- The command uses the same cost calculation as other ccusage commands
-- Verify with `ccusage daily` or `ccusage blocks` for detailed breakdowns
+- The command uses the same cost calculation as other gbusage commands
+- Verify with `gbusage daily` or `gbusage blocks` for detailed breakdowns
 
 ## Related Commands
 

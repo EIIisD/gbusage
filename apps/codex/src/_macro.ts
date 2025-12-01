@@ -1,10 +1,10 @@
-import type { LiteLLMModelPricing } from '@ccusage/internal/pricing';
+import type { LiteLLMModelPricing } from '@gbusage/internal/pricing';
 import process from 'node:process';
 import {
 	createPricingDataset,
 	fetchLiteLLMPricingDataset,
 	filterPricingDataset,
-} from '@ccusage/internal/pricing-fetch-utils';
+} from '@gbusage/internal/pricing-fetch-utils';
 
 const CODEX_MODEL_PREFIXES = [
 	'gpt-5',

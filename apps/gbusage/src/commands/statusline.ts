@@ -271,7 +271,7 @@ export const statuslineCommand = define({
 			await Result.try({
 				try: async () => {
 					// Determine session cost based on cost source
-					const { sessionCost, ccCost, ccusageCost } = await (async (): Promise<{ sessionCost?: number; ccCost?: number; ccusageCost?: number }> => {
+					const { sessionCost, ccCost, gbusageCost } = await (async (): Promise<{ sessionCost?: number; ccCost?: number; gbusageCost?: number }> => {
 						const costSource = ctx.values.costSource;
 
 						// Helper function to get gbusage cost
@@ -294,7 +294,7 @@ export const statuslineCommand = define({
 						if (costSource === 'both') {
 							const ccCost = hookData.cost?.total_cost_usd;
 							const gbusageCost = await getGbusageCost();
-							return { ccCost, ccusageCost: gbusageCost };
+							return { ccCost, gbusageCost };
 						}
 
 						// If 'cc' mode and cost is available from Claude Code, use it
@@ -459,9 +459,9 @@ export const statuslineCommand = define({
 					// Format: model · session, today, block · burn · context
 					const sessionDisplay = (() => {
 						// If both costs are available, show them side by side
-						if (ccCost != null || ccusageCost != null) {
+						if (ccCost != null || gbusageCost != null) {
 							const ccDisplay = ccCost != null ? formatCurrency(ccCost) : 'N/A';
-							const gbusageDisplay = ccusageCost != null ? formatCurrency(ccusageCost) : 'N/A';
+							const gbusageDisplay = gbusageCost != null ? formatCurrency(gbusageCost) : 'N/A';
 							return `(${ccDisplay} cc, ${gbusageDisplay} gbusage)`;
 						}
 						// Single cost display

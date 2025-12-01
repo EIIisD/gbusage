@@ -1,10 +1,10 @@
 # Command-Line Options
 
-ccusage provides extensive command-line options to customize its behavior. These options take precedence over configuration files and environment variables.
+gbusage provides extensive command-line options to customize its behavior. These options take precedence over configuration files and environment variables.
 
 ## Global Options
 
-All ccusage commands support these global options:
+All gbusage commands support these global options:
 
 ### Date Filtering
 
@@ -12,13 +12,13 @@ Filter usage data by date range:
 
 ```bash
 # Filter by date range
-ccusage daily --since 20250101 --until 20250630
+gbusage daily --since 20250101 --until 20250630
 
 # Show data from a specific date
-ccusage monthly --since 20250101
+gbusage monthly --since 20250101
 
 # Show data up to a specific date
-ccusage session --until 20250630
+gbusage session --until 20250630
 ```
 
 ### Output Format
@@ -27,15 +27,15 @@ Control how data is displayed:
 
 ```bash
 # JSON output for programmatic use
-ccusage daily --json
-ccusage daily -j
+gbusage daily --json
+gbusage daily -j
 
 # Show per-model breakdown
-ccusage daily --breakdown
-ccusage daily -b
+gbusage daily --breakdown
+gbusage daily -b
 
 # Combine options
-ccusage daily --json --breakdown
+gbusage daily --json --breakdown
 ```
 
 ### Cost Calculation Mode
@@ -44,13 +44,13 @@ Choose how costs are calculated:
 
 ```bash
 # Auto mode (default) - use costUSD when available
-ccusage daily --mode auto
+gbusage daily --mode auto
 
 # Calculate mode - always calculate from tokens
-ccusage daily --mode calculate
+gbusage daily --mode calculate
 
 # Display mode - only show pre-calculated costUSD
-ccusage daily --mode display
+gbusage daily --mode display
 ```
 
 ### Sort Order
@@ -59,10 +59,10 @@ Control the ordering of results:
 
 ```bash
 # Newest first (default)
-ccusage daily --order desc
+gbusage daily --order desc
 
 # Oldest first
-ccusage daily --order asc
+gbusage daily --order asc
 ```
 
 ### Offline Mode
@@ -71,8 +71,8 @@ Run without network connectivity:
 
 ```bash
 # Use cached pricing data
-ccusage daily --offline
-ccusage daily -O
+gbusage daily --offline
+gbusage daily -O
 ```
 
 ### Timezone
@@ -81,14 +81,14 @@ Set the timezone for date calculations:
 
 ```bash
 # Use UTC timezone
-ccusage daily --timezone UTC
+gbusage daily --timezone UTC
 
 # Use specific timezone
-ccusage daily --timezone America/New_York
-ccusage daily -z Asia/Tokyo
+gbusage daily --timezone America/New_York
+gbusage daily -z Asia/Tokyo
 
 # Short alias
-ccusage monthly -z Europe/London
+gbusage monthly -z Europe/London
 ```
 
 #### Timezone Effect
@@ -105,16 +105,16 @@ Control date and time formatting:
 
 ```bash
 # US English (12-hour time format)
-ccusage daily --locale en-US
+gbusage daily --locale en-US
 
 # Japanese (24-hour time format)
-ccusage blocks --locale ja-JP
+gbusage blocks --locale ja-JP
 
 # German (24-hour time format)
-ccusage session -l de-DE
+gbusage session -l de-DE
 
 # Short alias
-ccusage daily -l fr-FR
+gbusage daily -l fr-FR
 ```
 
 #### Locale Effects
@@ -139,10 +139,10 @@ Get detailed debugging information:
 
 ```bash
 # Debug mode - show pricing mismatches and config loading
-ccusage daily --debug
+gbusage daily --debug
 
 # Show sample discrepancies
-ccusage daily --debug --debug-samples 10
+gbusage daily --debug --debug-samples 10
 ```
 
 ### Configuration File
@@ -151,8 +151,8 @@ Use a custom configuration file:
 
 ```bash
 # Specify custom config file
-ccusage daily --config ./my-config.json
-ccusage monthly --config /path/to/team-config.json
+gbusage daily --config ./my-config.json
+gbusage monthly --config /path/to/team-config.json
 ```
 
 ## Command-Specific Options
@@ -163,15 +163,15 @@ Additional options for daily reports:
 
 ```bash
 # Group by project
-ccusage daily --instances
-ccusage daily -i
+gbusage daily --instances
+gbusage daily -i
 
 # Filter to specific project
-ccusage daily --project myproject
-ccusage daily -p myproject
+gbusage daily --project myproject
+gbusage daily -p myproject
 
 # Combine project filtering
-ccusage daily --instances --project myproject
+gbusage daily --instances --project myproject
 ```
 
 ### Weekly Command
@@ -180,8 +180,8 @@ Options for weekly reports:
 
 ```bash
 # Set week start day
-ccusage weekly --start-of-week monday
-ccusage weekly --start-of-week sunday
+gbusage weekly --start-of-week monday
+gbusage weekly --start-of-week sunday
 ```
 
 ### Session Command
@@ -190,10 +190,10 @@ Options for session reports:
 
 ```bash
 # Filter by session ID
-ccusage session --id abc123-session
+gbusage session --id abc123-session
 
 # Filter by project
-ccusage session --project myproject
+gbusage session --project myproject
 ```
 
 ### Blocks Command
@@ -202,26 +202,26 @@ Options for 5-hour billing blocks:
 
 ```bash
 # Show only active block
-ccusage blocks --active
-ccusage blocks -a
+gbusage blocks --active
+gbusage blocks -a
 
 # Show recent blocks (last 3 days)
-ccusage blocks --recent
-ccusage blocks -r
+gbusage blocks --recent
+gbusage blocks -r
 
 # Set token limit for warnings
-ccusage blocks --token-limit 500000
-ccusage blocks --token-limit max
+gbusage blocks --token-limit 500000
+gbusage blocks --token-limit max
 
 # Live monitoring mode
-ccusage blocks --live
-ccusage blocks --live --refresh-interval 2
+gbusage blocks --live
+gbusage blocks --live --refresh-interval 2
 
 # Customize session length
-ccusage blocks --session-length 5
+gbusage blocks --session-length 5
 ```
 
-> **Note:** The MCP server CLI moved to the dedicated `@ccusage/mcp` package. See the [MCP Server guide](/guide/mcp-server) for usage details.
+> **Note:** The MCP server CLI moved to the dedicated `@gbusage/mcp` package. See the [MCP Server guide](/guide/mcp-server) for usage details.
 
 ### Statusline
 
@@ -229,16 +229,16 @@ Options for statusline display:
 
 ```bash
 # Basic statusline
-ccusage statusline
+gbusage statusline
 
 # Force offline mode
-ccusage statusline --offline
+gbusage statusline --offline
 
 # Enable caching
-ccusage statusline --cache
+gbusage statusline --cache
 
 # Custom refresh interval
-ccusage statusline --refresh-interval 5
+gbusage statusline --refresh-interval 5
 ```
 
 ## JSON Output Options
@@ -247,13 +247,13 @@ When using `--json` output, additional processing options are available:
 
 ```bash
 # Apply jq filter to JSON output
-ccusage daily --json --jq ".data[]"
+gbusage daily --json --jq ".data[]"
 
 # Filter high-cost days
-ccusage daily --json --jq ".data[] | select(.cost > 10)"
+gbusage daily --json --jq ".data[] | select(.cost > 10)"
 
 # Extract specific fields
-ccusage session --json --jq ".data[] | {date, cost}"
+gbusage session --json --jq ".data[] | {date, cost}"
 ```
 
 ## Option Precedence
@@ -262,9 +262,9 @@ Options are applied in this order (highest to lowest priority):
 
 1. **Command-line arguments** - Direct CLI options
 2. **Custom config file** - Via `--config` flag
-3. **Local project config** - `.ccusage/ccusage.json`
-4. **User config** - `~/.config/claude/ccusage.json`
-5. **Legacy config** - `~/.claude/ccusage.json`
+3. **Local project config** - `.gbusage/gbusage.json`
+4. **User config** - `~/.config/claude/gbusage.json`
+5. **Legacy config** - `~/.claude/gbusage.json`
 6. **Built-in defaults**
 
 ## Examples
@@ -273,52 +273,52 @@ Options are applied in this order (highest to lowest priority):
 
 ```bash
 # Daily development check
-ccusage daily --instances --breakdown
+gbusage daily --instances --breakdown
 
 # Check specific project costs
-ccusage daily --project myapp --since 20250101
+gbusage daily --project myapp --since 20250101
 
 # Export for reporting
-ccusage monthly --json > monthly-report.json
+gbusage monthly --json > monthly-report.json
 ```
 
 ### Team Collaboration
 
 ```bash
 # Use team configuration
-ccusage daily --config ./team-config.json
+gbusage daily --config ./team-config.json
 
 # Consistent timezone for remote team
-ccusage daily --timezone UTC --locale en-CA
+gbusage daily --timezone UTC --locale en-CA
 
 # Generate shareable report
-ccusage weekly --json --jq ".summary"
+gbusage weekly --json --jq ".summary"
 ```
 
 ### Cost Monitoring
 
 ```bash
 # Monitor active usage
-ccusage blocks --active --live
+gbusage blocks --active --live
 
 # Check if approaching limits
-ccusage blocks --token-limit 500000
+gbusage blocks --token-limit 500000
 
 # Historical analysis
-ccusage monthly --mode calculate --breakdown
+gbusage monthly --mode calculate --breakdown
 ```
 
 ### Debugging Issues
 
 ```bash
 # Debug configuration loading
-ccusage daily --debug --config ./test-config.json
+gbusage daily --debug --config ./test-config.json
 
 # Check pricing discrepancies
-ccusage daily --debug --debug-samples 20
+gbusage daily --debug --debug-samples 20
 
 # Silent mode for scripts
-LOG_LEVEL=0 ccusage daily --json
+LOG_LEVEL=0 gbusage daily --json
 ```
 
 ## Short Aliases

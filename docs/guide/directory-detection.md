@@ -1,23 +1,23 @@
 # Directory Detection
 
-ccusage automatically detects and manages Claude Code data directories.
+gbusage automatically detects and manages Claude Code data directories.
 
 ## Default Directory Locations
 
-ccusage automatically searches for Claude Code data in these locations:
+gbusage automatically searches for Claude Code data in these locations:
 
 - **`~/.config/claude/projects/`** - New default location (Claude Code v1.0.30+)
 - **`~/.claude/projects/`** - Legacy location (pre-v1.0.30)
 
-When no custom directory is specified, ccusage searches both locations and aggregates data from all valid directories found.
+When no custom directory is specified, gbusage searches both locations and aggregates data from all valid directories found.
 
 ::: info Breaking Change
-The directory change from `~/.claude` to `~/.config/claude` in Claude Code v1.0.30 was an undocumented breaking change. ccusage handles both locations automatically to ensure backward compatibility.
+The directory change from `~/.claude` to `~/.config/claude` in Claude Code v1.0.30 was an undocumented breaking change. gbusage handles both locations automatically to ensure backward compatibility.
 :::
 
 ## Search Priority
 
-When `CLAUDE_CONFIG_DIR` environment variable is not set, ccusage searches in this order:
+When `CLAUDE_CONFIG_DIR` environment variable is not set, gbusage searches in this order:
 
 1. **Primary**: `~/.config/claude/projects/` (preferred for newer installations)
 2. **Fallback**: `~/.claude/projects/` (for legacy installations)
@@ -32,7 +32,7 @@ Override the default search with a specific directory:
 
 ```bash
 export CLAUDE_CONFIG_DIR="/custom/path/to/claude"
-ccusage daily
+gbusage daily
 ```
 
 ### Multiple Directories
@@ -41,7 +41,7 @@ Aggregate data from multiple Claude installations:
 
 ```bash
 export CLAUDE_CONFIG_DIR="/path/to/claude1,/path/to/claude2"
-ccusage daily
+gbusage daily
 ```
 
 ## Directory Structure
@@ -70,7 +70,7 @@ Each:
 
 ### No Data Found
 
-If ccusage reports no data found:
+If gbusage reports no data found:
 
 ```bash
 # Check if directories exist
@@ -82,7 +82,7 @@ echo $CLAUDE_CONFIG_DIR
 
 # Test with explicit directory
 export CLAUDE_CONFIG_DIR="/path/to/claude"
-ccusage daily
+gbusage daily
 ```
 
 ### Permission Errors
@@ -102,10 +102,10 @@ chmod -R 755 ~/.config/claude/
 ```bash
 # Force specific directory
 export CLAUDE_CONFIG_DIR="/exact/path/to/claude"
-ccusage daily
+gbusage daily
 
 # Verify which directory is being used
-LOG_LEVEL=4 ccusage daily
+LOG_LEVEL=4 gbusage daily
 ```
 
 ## Related Documentation

@@ -2,12 +2,12 @@
 layout: home
 
 hero:
-  name: ccusage
+  name: gbusage
   text: Claude Code Usage Analysis
   tagline: A powerful CLI tool for analyzing Claude Code usage from local JSONL files
   image:
     src: /logo.svg
-    alt: ccusage logo
+    alt: gbusage logo
   actions:
     - theme: brand
       text: Get Started
@@ -67,13 +67,13 @@ features:
 ---
 
 <div style="text-align: center; margin: 2rem 0;">
-  <h2 style="margin-bottom: 1rem;">Support ccusage</h2>
-  <p style="margin-bottom: 1.5rem;">If you find ccusage helpful, please consider sponsoring the development!</p>
+  <h2 style="margin-bottom: 1rem;">Support gbusage</h2>
+  <p style="margin-bottom: 1.5rem;">If you find gbusage helpful, please consider sponsoring the development!</p>
 
   <h3 style="margin-bottom: 1rem;">Featured Sponsor</h3>
   <p style="margin-bottom: 1rem;">Check out <a href="https://www.youtube.com/watch?v=Ak6qpQ5qdgk" target="_blank">ccusage: The Claude Code cost scorecard that went viral</a></p>
   <a href="https://www.youtube.com/watch?v=Ak6qpQ5qdgk" target="_blank">
-    <img src="/ccusage_thumbnail.png" alt="ccusage: The Claude Code cost scorecard that went viral" style="max-width: 600px; height: auto;">
+    <img src="/gbusage_thumbnail.png" alt="ccusage: The Claude Code cost scorecard that went viral" style="max-width: 600px; height: auto;">
   </a>
 
   <div style="margin-top: 2rem;">

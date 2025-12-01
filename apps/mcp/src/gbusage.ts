@@ -6,7 +6,7 @@ import { DATE_FILTER_REGEX } from './consts.ts';
 export const filterDateSchema = z.string()
 	.regex(DATE_FILTER_REGEX, 'Date must be in YYYYMMDD format');
 
-export const ccusageParametersShape = {
+export const gbusageParametersShape = {
 	since: filterDateSchema.optional(),
 	until: filterDateSchema.optional(),
 	mode: z.enum(['auto', 'calculate', 'display']).default('auto').optional(),
@@ -14,26 +14,26 @@ export const ccusageParametersShape = {
 	locale: z.string().optional(),
 } as const satisfies Record<string, z.ZodTypeAny>;
 
-export const ccusageParametersSchema = z.object(ccusageParametersShape);
+export const gbusageParametersSchema = z.object(gbusageParametersShape);
 
-let cachedCcusageInvocation: CliInvocation | null = null;
+let cachedGbusageInvocation: CliInvocation | null = null;
 
-function getCcusageInvocation(): CliInvocation {
-	if (cachedCcusageInvocation != null) {
-		return cachedCcusageInvocation;
+function getGbusageInvocation(): CliInvocation {
+	if (cachedGbusageInvocation != null) {
+		return cachedGbusageInvocation;
 	}
 
-	const entryPath = resolveBinaryPath('ccusage', 'ccusage');
-	cachedCcusageInvocation = createCliInvocation(entryPath);
-	return cachedCcusageInvocation;
+	const entryPath = resolveBinaryPath('gbusage', 'gbusage');
+	cachedGbusageInvocation = createCliInvocation(entryPath);
+	return cachedGbusageInvocation;
 }
 
-async function runCcusageCliJson(
+async function runGbusageCliJson(
 	command: 'daily' | 'monthly' | 'session' | 'blocks',
-	parameters: z.infer<typeof ccusageParametersSchema>,
+	parameters: z.infer<typeof gbusageParametersSchema>,
 	claudePath: string,
 ): Promise<string> {
-	const { executable, prefixArgs } = getCcusageInvocation();
+	const { executable, prefixArgs } = getGbusageInvocation();
 	const cliArgs: string[] = [...prefixArgs, command, '--json'];
 
 	const since = parameters.since;
@@ -58,14 +58,14 @@ async function runCcusageCliJson(
 	}
 
 	return executeCliCommand(executable, cliArgs, {
-		// Set Claude path for ccusage
+		// Set Claude path for gbusage
 		CLAUDE_CONFIG_DIR: claudePath,
 	});
 }
 
-export async function getCcusageDaily(parameters: z.infer<typeof ccusageParametersSchema>, claudePath: string): Promise<unknown> {
+export async function getGbusageDaily(parameters: z.infer<typeof gbusageParametersSchema>, claudePath: string): Promise<unknown> {
 	try {
-		const raw = await runCcusageCliJson('daily', parameters, claudePath);
+		const raw = await runGbusageCliJson('daily', parameters, claudePath);
 		const parsed = JSON.parse(raw) as unknown;
 		// If the parsed result is an empty array, convert to expected structure
 		if (Array.isArray(parsed) && parsed.length === 0) {
@@ -79,9 +79,9 @@ export async function getCcusageDaily(parameters: z.infer<typeof ccusageParamete
 	}
 }
 
-export async function getCcusageMonthly(parameters: z.infer<typeof ccusageParametersSchema>, claudePath: string): Promise<unknown> {
+export async function getGbusageMonthly(parameters: z.infer<typeof gbusageParametersSchema>, claudePath: string): Promise<unknown> {
 	try {
-		const raw = await runCcusageCliJson('monthly', parameters, claudePath);
+		const raw = await runGbusageCliJson('monthly', parameters, claudePath);
 		const parsed = JSON.parse(raw) as unknown;
 		// If the parsed result is an empty array, convert to expected structure
 		if (Array.isArray(parsed) && parsed.length === 0) {
@@ -95,9 +95,9 @@ export async function getCcusageMonthly(parameters: z.infer<typeof ccusageParame
 	}
 }
 
-export async function getCcusageSession(parameters: z.infer<typeof ccusageParametersSchema>, claudePath: string): Promise<unknown> {
+export async function getGbusageSession(parameters: z.infer<typeof gbusageParametersSchema>, claudePath: string): Promise<unknown> {
 	try {
-		const raw = await runCcusageCliJson('session', parameters, claudePath);
+		const raw = await runGbusageCliJson('session', parameters, claudePath);
 		const parsed = JSON.parse(raw) as unknown;
 		// If the parsed result is an empty array, convert to expected structure
 		if (Array.isArray(parsed) && parsed.length === 0) {
@@ -111,9 +111,9 @@ export async function getCcusageSession(parameters: z.infer<typeof ccusageParame
 	}
 }
 
-export async function getCcusageBlocks(parameters: z.infer<typeof ccusageParametersSchema>, claudePath: string): Promise<unknown> {
+export async function getGbusageBlocks(parameters: z.infer<typeof gbusageParametersSchema>, claudePath: string): Promise<unknown> {
 	try {
-		const raw = await runCcusageCliJson('blocks', parameters, claudePath);
+		const raw = await runGbusageCliJson('blocks', parameters, claudePath);
 		const parsed = JSON.parse(raw) as unknown;
 		// If the parsed result is an empty array, convert to expected structure
 		if (Array.isArray(parsed) && parsed.length === 0) {

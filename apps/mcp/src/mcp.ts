@@ -1,14 +1,14 @@
 /**
  * @fileoverview MCP (Model Context Protocol) server implementation
  *
- * This module provides MCP server functionality for exposing ccusage data
+ * This module provides MCP server functionality for exposing gbusage data
  * through the Model Context Protocol. It includes both stdio and HTTP transport
  * options for integration with various MCP clients.
  *
  * @module mcp
  */
 
-import type { LoadOptions } from 'ccusage/data-loader';
+import type { LoadOptions } from 'gbusage/data-loader';
 import { StreamableHTTPTransport } from '@hono/mcp';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
@@ -20,13 +20,13 @@ import { Hono } from 'hono/tiny';
 import { name, version } from '../package.json';
 
 import {
-	ccusageParametersSchema,
-	ccusageParametersShape,
-	getCcusageBlocks,
-	getCcusageDaily,
-	getCcusageMonthly,
-	getCcusageSession,
-} from './ccusage.ts';
+	gbusageParametersSchema,
+	gbusageParametersShape,
+	getGbusageBlocks,
+	getGbusageDaily,
+	getGbusageMonthly,
+	getGbusageSession,
+} from './gbusage.ts';
 import {
 	codexParametersSchema,
 	codexParametersShape,
@@ -59,11 +59,11 @@ export function createMcpServer(options?: LoadOptions): McpServer {
 		'daily',
 		{
 			description: 'Show usage report grouped by date',
-			inputSchema: ccusageParametersShape,
+			inputSchema: gbusageParametersShape,
 		},
 		async (args) => {
-			const parameters = ccusageParametersSchema.parse(args);
-			const jsonOutput = await getCcusageDaily(parameters, claudePath);
+			const parameters = gbusageParametersSchema.parse(args);
+			const jsonOutput = await getGbusageDaily(parameters, claudePath);
 			return {
 				content: [
 					{
@@ -80,11 +80,11 @@ export function createMcpServer(options?: LoadOptions): McpServer {
 		'session',
 		{
 			description: 'Show usage report grouped by conversation session',
-			inputSchema: ccusageParametersShape,
+			inputSchema: gbusageParametersShape,
 		},
 		async (args) => {
-			const parameters = ccusageParametersSchema.parse(args);
-			const jsonOutput = await getCcusageSession(parameters, claudePath);
+			const parameters = gbusageParametersSchema.parse(args);
+			const jsonOutput = await getGbusageSession(parameters, claudePath);
 			return {
 				content: [
 					{
@@ -101,11 +101,11 @@ export function createMcpServer(options?: LoadOptions): McpServer {
 		'monthly',
 		{
 			description: 'Show usage report grouped by month',
-			inputSchema: ccusageParametersShape,
+			inputSchema: gbusageParametersShape,
 		},
 		async (args) => {
-			const parameters = ccusageParametersSchema.parse(args);
-			const jsonOutput = await getCcusageMonthly(parameters, claudePath);
+			const parameters = gbusageParametersSchema.parse(args);
+			const jsonOutput = await getGbusageMonthly(parameters, claudePath);
 			return {
 				content: [
 					{
@@ -122,11 +122,11 @@ export function createMcpServer(options?: LoadOptions): McpServer {
 		'blocks',
 		{
 			description: 'Show usage report grouped by session billing blocks',
-			inputSchema: ccusageParametersShape,
+			inputSchema: gbusageParametersShape,
 		},
 		async (args) => {
-			const parameters = ccusageParametersSchema.parse(args);
-			const jsonOutput = await getCcusageBlocks(parameters, claudePath);
+			const parameters = gbusageParametersSchema.parse(args);
+			const jsonOutput = await getGbusageBlocks(parameters, claudePath);
 			return {
 				content: [
 					{

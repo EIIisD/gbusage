@@ -11,7 +11,7 @@ Claude Code can only retain logs for 30 days by default. To be able to check log
 ## Basic Usage
 
 ```bash
-ccusage monthly
+gbusage monthly
 ```
 
 ## Example Output
@@ -60,13 +60,13 @@ Filter by month range:
 
 ```bash
 # Show specific months
-ccusage monthly --since 20250101 --until 20250630
+gbusage monthly --since 20250101 --until 20250630
 
 # Show usage from 2024
-ccusage monthly --since 20240101 --until 20241231
+gbusage monthly --since 20240101 --until 20241231
 
 # Show last 6 months
-ccusage monthly --since $(date -d '6 months ago' +%Y%m%d)
+gbusage monthly --since $(date -d '6 months ago' +%Y%m%d)
 ```
 
 ::: tip Date Filtering
@@ -77,23 +77,23 @@ Even though you specify full dates (YYYYMMDD), monthly reports group by month. T
 
 ```bash
 # Newest months first (default)
-ccusage monthly --order desc
+gbusage monthly --order desc
 
 # Oldest months first
-ccusage monthly --order asc
+gbusage monthly --order asc
 ```
 
 ### Cost Calculation Modes
 
 ```bash
 # Use pre-calculated costs when available (default)
-ccusage monthly --mode auto
+gbusage monthly --mode auto
 
 # Always calculate costs from tokens
-ccusage monthly --mode calculate
+gbusage monthly --mode calculate
 
 # Only show pre-calculated costs
-ccusage monthly --mode display
+gbusage monthly --mode display
 ```
 
 ### Model Breakdown
@@ -101,7 +101,7 @@ ccusage monthly --mode display
 See costs broken down by model:
 
 ```bash
-ccusage monthly --breakdown
+gbusage monthly --breakdown
 ```
 
 Example with breakdown:
@@ -121,7 +121,7 @@ Example with breakdown:
 ### JSON Output
 
 ```bash
-ccusage monthly --json
+gbusage monthly --json
 ```
 
 ```json
@@ -142,7 +142,7 @@ ccusage monthly --json
 ### Offline Mode
 
 ```bash
-ccusage monthly --offline
+gbusage monthly --offline
 ```
 
 ## Analysis Use Cases
@@ -153,7 +153,7 @@ Monthly reports help with subscription planning:
 
 ```bash
 # Check last year's usage
-ccusage monthly --since 20240101 --until 20241231
+gbusage monthly --since 20240101 --until 20241231
 ```
 
 Look at the total cost to understand what you'd pay on usage-based pricing.
@@ -164,8 +164,8 @@ Track how your usage changes over time:
 
 ```bash
 # Compare year over year
-ccusage monthly --since 20230101 --until 20231231  # 2023
-ccusage monthly --since 20240101 --until 20241231  # 2024
+gbusage monthly --since 20230101 --until 20231231  # 2023
+gbusage monthly --since 20240101 --until 20241231  # 2024
 ```
 
 ### Model Migration Analysis
@@ -173,7 +173,7 @@ ccusage monthly --since 20240101 --until 20241231  # 2024
 See how your model usage evolves:
 
 ```bash
-ccusage monthly --breakdown
+gbusage monthly --breakdown
 ```
 
 This helps track transitions between Opus, Sonnet, and other models.
@@ -184,14 +184,14 @@ Identify busy/slow periods:
 
 ```bash
 # Academic year analysis
-ccusage monthly --since 20240901 --until 20250630
+gbusage monthly --since 20240901 --until 20250630
 ```
 
 ### Export for Business Analysis
 
 ```bash
 # Create quarterly reports
-ccusage monthly --since 20241001 --until 20241231 --json > q4-2024.json
+gbusage monthly --since 20241001 --until 20241231 --json > q4-2024.json
 ```
 
 ## Tips for Monthly Analysis

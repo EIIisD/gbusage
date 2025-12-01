@@ -1,8 +1,8 @@
 # Introduction
 
-![ccusage daily report showing token usage and costs by date](/screenshot.png)
+![gbusage daily report showing token usage and costs by date](/screenshot.png)
 
-**ccusage** (claude-code-usage) is a powerful CLI tool that analyzes your Claude Code usage from local JSONL files to help you understand your token consumption patterns and estimated costs.
+**gbusage** (claude-code-usage) is a powerful CLI tool that analyzes your Claude Code usage from local JSONL files to help you understand your token consumption patterns and estimated costs.
 
 ## The Problem
 
@@ -15,7 +15,7 @@ Claude Code's Max plan offers unlimited usage, which is fantastic! But many user
 
 ## The Solution
 
-ccusage analyzes the local JSONL files that Claude Code automatically generates and provides:
+gbusage analyzes the local JSONL files that Claude Code automatically generates and provides:
 
 - **Detailed Usage Reports** - Daily, monthly, and session-based breakdowns
 - **Cost Analysis** - Estimated costs based on token usage and model pricing
@@ -25,7 +25,7 @@ ccusage analyzes the local JSONL files that Claude Code automatically generates 
 ## How It Works
 
 1. **Claude Code generates JSONL files** containing usage data
-2. **ccusage reads these files** from your local machine
+2. **gbusage reads these files** from your local machine
 3. **Analyzes and aggregates** the data by date, session, or time blocks
 4. **Calculates estimated costs** using model pricing information
 5. **Presents results** in beautiful tables or JSON format
@@ -34,7 +34,7 @@ ccusage analyzes the local JSONL files that Claude Code automatically generates 
 
 ### 🚀 Ultra-Small Bundle Size
 
-Unlike other CLI tools, we pay extreme attention to bundle size. ccusage achieves an incredibly small footprint even without minification, which means you can run it directly without installation using `bunx ccusage` for instant access.
+Unlike other CLI tools, we pay extreme attention to bundle size. gbusage achieves an incredibly small footprint even without minification, which means you can run it directly without installation using `bunx gbusage` for instant access.
 
 ### 📊 Multiple Report Types
 
@@ -70,7 +70,7 @@ Unlike other CLI tools, we pay extreme attention to bundle size. ccusage achieve
 
 ## Data Sources
 
-ccusage reads from Claude Code's local data directories:
+gbusage reads from Claude Code's local data directories:
 
 - **New location**: `~/.config/claude/projects/` (Claude Code v1.0.30+)
 - **Legacy location**: `~/.claude/projects/` (pre-v1.0.30)
@@ -81,7 +81,7 @@ The tool automatically detects and aggregates data from both locations for compa
 
 - **100% Local** - All analysis happens on your machine
 - **No Data Transmission** - Your usage data never leaves your computer
-- **Read-Only** - ccusage only reads files, never modifies them
+- **Read-Only** - gbusage only reads files, never modifies them
 - **Open Source** - Full transparency in how your data is processed
 
 ## Limitations

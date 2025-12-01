@@ -5,7 +5,7 @@ Session reports show your Claude Code usage grouped by individual conversation s
 ## Basic Usage
 
 ```bash
-ccusage session
+gbusage session
 ```
 
 ## Specific Session Lookup
@@ -13,7 +13,7 @@ ccusage session
 Query individual session details by providing a session ID:
 
 ```bash
-ccusage session --id <session-id>
+gbusage session --id <session-id>
 ```
 
 This is particularly useful for:
@@ -26,16 +26,16 @@ This is particularly useful for:
 
 ```bash
 # Get session data in table format
-ccusage session --id session-abc123-def456
+gbusage session --id session-abc123-def456
 
 # Get session data as JSON for scripting
-ccusage session --id session-abc123-def456 --json
+gbusage session --id session-abc123-def456 --json
 
 # Extract just the cost using jq
-ccusage session --id session-abc123-def456 --json --jq '.totalCost'
+gbusage session --id session-abc123-def456 --json --jq '.totalCost'
 
 # Use in a custom statusline script
-COST=$(ccusage session --id "$SESSION_ID" --json --jq '.totalCost')
+COST=$(gbusage session --id "$SESSION_ID" --json --jq '.totalCost')
 echo "Current session: \$${COST}"
 ```
 
@@ -46,7 +46,7 @@ Session IDs are the actual filenames (without `.jsonl` extension) stored in Clau
 - `session-20250621-abc123-def456`
 - `project-conversation-xyz789`
 
-You can find session IDs by running `ccusage session` and looking for the files in your Claude data directory.
+You can find session IDs by running `gbusage session` and looking for the files in your Claude data directory.
 
 ## Example Output
 
@@ -97,13 +97,13 @@ Get detailed information about a specific session:
 
 ```bash
 # Query a specific session by ID
-ccusage session --id <session-id>
+gbusage session --id <session-id>
 
 # Get JSON output for a specific session
-ccusage session --id <session-id> --json
+gbusage session --id <session-id> --json
 
 # Short form using -i flag
-ccusage session -i <session-id>
+gbusage session -i <session-id>
 ```
 
 **Use cases:**
@@ -119,26 +119,26 @@ Filter sessions by their last activity date:
 
 ```bash
 # Show sessions active since May 25th
-ccusage session --since 20250525
+gbusage session --since 20250525
 
 # Show sessions active in a specific date range
-ccusage session --since 20250520 --until 20250530
+gbusage session --since 20250520 --until 20250530
 
 # Show only recent sessions (last week)
-ccusage session --since $(date -d '7 days ago' +%Y%m%d)
+gbusage session --since $(date -d '7 days ago' +%Y%m%d)
 ```
 
 ### Cost Calculation Modes
 
 ```bash
 # Use pre-calculated costs when available (default)
-ccusage session --mode auto
+gbusage session --mode auto
 
 # Always calculate costs from tokens
-ccusage session --mode calculate
+gbusage session --mode calculate
 
 # Only show pre-calculated costs
-ccusage session --mode display
+gbusage session --mode display
 ```
 
 ### Model Breakdown
@@ -146,7 +146,7 @@ ccusage session --mode display
 See per-model cost breakdown within each session:
 
 ```bash
-ccusage session --breakdown
+gbusage session --breakdown
 ```
 
 Example with breakdown:
@@ -168,7 +168,7 @@ Example with breakdown:
 Export session data as JSON for further analysis:
 
 ```bash
-ccusage session --json
+gbusage session --json
 ```
 
 ```json
@@ -207,9 +207,9 @@ ccusage session --json
 Use cached pricing data without network access:
 
 ```bash
-ccusage session --offline
+gbusage session --offline
 # or short form:
-ccusage session -O
+gbusage session -O
 ```
 
 ## Analysis Use Cases
@@ -219,7 +219,7 @@ ccusage session -O
 Session reports help you understand which conversations are most costly:
 
 ```bash
-ccusage session
+gbusage session
 ```
 
 Look at the top sessions to understand:
@@ -232,18 +232,18 @@ Look at the top sessions to understand:
 
 ```bash
 # See recent conversation activity
-ccusage session --since 20250615
+gbusage session --since 20250615
 
 # Compare different time periods
-ccusage session --since 20250601 --until 20250615  # First half of month
-ccusage session --since 20250616 --until 20250630  # Second half of month
+gbusage session --since 20250601 --until 20250615  # First half of month
+gbusage session --since 20250616 --until 20250630  # Second half of month
 ```
 
 ### Model Usage Analysis
 
 ```bash
 # See which models you use in different conversations
-ccusage session --breakdown
+gbusage session --breakdown
 ```
 
 This helps understand:
@@ -256,10 +256,10 @@ This helps understand:
 
 ```bash
 # Export data for spreadsheet analysis
-ccusage session --json > sessions.json
+gbusage session --json > sessions.json
 
 # Find sessions above a certain cost threshold
-ccusage session --json | jq '.sessions[] | select(.totalCost > 50)'
+gbusage session --json | jq '.sessions[] | select(.totalCost > 50)'
 ```
 
 ## Tips for Session Analysis
@@ -303,7 +303,7 @@ Session reports adapt to your terminal width:
 - **Wide terminals (≥100 chars)**: Shows all columns including cache metrics
 - **Narrow terminals (<100 chars)**: Compact mode with essential columns (Session, Models, Input, Output, Cost, Last Activity)
 
-When in compact mode, ccusage displays a message explaining how to see the full data.
+When in compact mode, gbusage displays a message explaining how to see the full data.
 
 ## Related Commands
 
