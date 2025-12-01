@@ -1,4 +1,4 @@
-# GB Usage 🇬🇧
+# ㎇usage 🇬🇧
 
 This is a fork of the repository `ccusage` but for people who live on a small island off of the coast of Europe that once ruled half the world.
 
